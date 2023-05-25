@@ -22,4 +22,6 @@ moreover, it detects <strong> tags </strong>
 </ul>
   
  
-<h3> Moreover for up, low, cap, a iterator feature is added, so if a number appears next to it, like so: (low, <number>) it turns the previously specified number of words in lowercase, uppercase or capitalized accordingly. </h3>
+<h3> Moreover for up, low, cap, a iterator feature is added, so if a number appears next to it, like so: 
+  ```(low, <number>)``` 
+  it turns the previously specified number of words in lowercase, uppercase or capitalized accordingly. </h3>
