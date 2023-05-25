@@ -2,13 +2,13 @@
 
 Inkwell is a golang-based CLI tool that takes a input file and formats its string via custom tags and punctuation corrections
 
-
+Its also my first project, and one im proud of
 <h2> usage </h2>
 
 You give it a txt file, and within that file it will correct the punctuation and output it to another file result.txt
 moreover, it detects <strong> tags </strong> 
 
-<h2> tags </h2>
+<h2> Tags </h2>
 <ul>
 <li> Every instance of (bin) replaces the word (that is a binary number) before it with the decimal version of the word. </li>
 
