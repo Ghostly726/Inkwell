@@ -23,5 +23,8 @@ moreover, it detects <strong> tags </strong>
   
  
 <h3> Moreover for up, low, cap, a iterator feature is added, so if a number appears next to it, like so: </h3>
-  ```(low, <number>)``` 
-  <h3> it turns the previously specified number of words in lowercase, uppercase or capitalized accordingly. </h3>
+
+```
+(low, <number>)
+```
+<h3> it turns the previously specified number of words in lowercase, uppercase or capitalized accordingly. </h3>
