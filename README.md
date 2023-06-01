@@ -9,7 +9,7 @@ You give it a txt file, and within that file it will correct the punctuation and
 moreover, it detects <strong> tags </strong> 
 
 <h2> Tags </h2>
-<h3 style="color: yellow">Ensure spaces before and after the tag before execution</h3>
+!Ensure spaces before and after the tag before execution
 <ul>
 <li> Every instance of (bin) replaces the word (that is a binary number) before it with the decimal version of the word. </li>
 
