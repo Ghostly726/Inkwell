@@ -5,7 +5,7 @@ Inkwell is a golang-based CLI tool that takes a input file and formats its strin
 Its also my first project, and one im proud of
 <h2> usage </h2>
 
-You give it a txt file, and within that file it will correct the punctuation and output it to another file result.txt
+You give it a file, and within that file it will correct the punctuation and output it to another file 
 moreover, it detects <strong> tags </strong> 
 
 <h2> Tags </h2>
