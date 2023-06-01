@@ -11,7 +11,6 @@ import (
 	"bufio"
 	"fmt"
 	"inkwell"
-	"log"
 	"os"
 	"os/exec"
 	"regexp"
@@ -34,13 +33,13 @@ func main() {
 	terminalArguments := os.Args[1:]
 
 	if len(terminalArguments) == 0 || terminalArguments[0] == "-h" || terminalArguments[0] == "--help" {
-		fmt.Println("Project inkwell by A.rahman Khaled" + "\n" + "Usage: " + "inkwell <input file path> <output file path>")
-		fmt.Println("-h or --help: displays help page")
+		inkwell.GreenPrintln("Project inkwell by A.rahman Khaled" + "\n" + "Usage: " + "inkwell <input file path> <output file path>")
+		inkwell.GreenPrintln("-h or --help: displays help page")
 		return
 	}
 
 	if len(terminalArguments) == 1 {
-		fmt.Println("No output file detected")
+		inkwell.RedPrintln("No output file detected")
 		return
 	}
 
@@ -48,7 +47,7 @@ func main() {
 
 	file, err := os.Open(terminalArguments[0])
 	if err != nil {
-		fmt.Println("Error opening file: " + terminalArguments[0] + " is not found")
+		inkwell.RedPrintln("Error opening file: " + terminalArguments[0] + " is not found")
 		return
 	}
 	defer file.Close()
@@ -60,7 +59,7 @@ func main() {
 	}
 
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file")
+		inkwell.RedPrintln("Error reading file")
 	}
 	// file ops and mods
 	stringInFileAsArray := strings.Fields(finalStr)
@@ -83,7 +82,7 @@ func main() {
 				if pattern.MatchString(nextStr) {
 					currentStr += nextStr
 					stringInFileAsArray = inkwell.RemoveElement(stringInFileAsArray, i+1)
-					fmt.Println("spaced out tag handled")
+					inkwell.YellowPrintln("spaced out tag handled")
 				}
 			}
 		}
@@ -94,9 +93,10 @@ func main() {
 			iterator = i
 		}
 		if tagCheck {
-			fmt.Println(tag + " was detected")
+			inkwell.YellowPrintln(tag + " was detected")
 			if i == 0 {
-				fmt.Println(tag + " was at the start of the text, hence invalid")
+				inkwell.RedPrintln(tag + " was at the start of the text, hence invalid")
+				stringInFileAsArray = inkwell.RemoveElement(stringInFileAsArray, i)
 				continue
 			}
 			//* main loop to apply functions
@@ -106,9 +106,10 @@ func main() {
 					//* hexadecimal to decimal conversion
 					u, err := strconv.ParseInt(stringInFileAsArray[j], 16, 32)
 					if err != nil {
-						log.Fatal("Inkwell project error: Error in conversion from hexadecimal, may be invalid syntax" + "\n" +
-							"more Info: " + err.Error())
+						inkwell.OrangePrintln("Inkwell project error: Error in conversion from hexadecimal, Did you enter a invalid hexadecimal number?")
+						return
 					}
+
 					stringInFileAsArray[j] = fmt.Sprint(u)
 				}
 
@@ -117,8 +118,8 @@ func main() {
 					//* binary to decimal conversion
 					u, err := strconv.ParseInt(stringInFileAsArray[j], 2, 32)
 					if err != nil {
-						log.Fatal("Inkwell project error: Error in conversion from binary, may be invalid syntax" + "\n" +
-							"more Info: " + err.Error())
+						inkwell.OrangePrintln("Inkwell project error: Error in conversion from binary, Did you enter a invalid binary number?")
+						return
 					}
 					stringInFileAsArray[j] = fmt.Sprint(u)
 				}
@@ -173,11 +174,10 @@ func main() {
 
 	er := inkwell.WriteToFile(filename, content)
 	if er != nil {
-		fmt.Println("Error writing file")
+		inkwell.RedPrintln("Error writing file")
 		return
 	}
-
-	fmt.Println("File written successfully.")
+	inkwell.GreenPrintln("File written successfully.")
 
 	// open file after execution
 	if err := OpenResultFile(terminalArguments[1]); err != nil {

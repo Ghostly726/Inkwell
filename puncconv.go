@@ -8,7 +8,7 @@ import (
 func PuncConv(text string) string {
 	puncRegex := regexp.MustCompile(` *(\,|\.|\!|\?|\:|\;)+ *`)
 	matches := puncRegex.FindAllStringIndex(text, -1)
-	// reverse loop cuz we using ranges here
+	//* reverse loop cuz we using ranges here
 	for i := len(matches) - 1; i >= 0; i-- {
 		text = HandlePunc(matches[i], text)
 	}
